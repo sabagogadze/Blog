@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 
 class PagesController extends Controller
 {
@@ -15,8 +16,9 @@ class PagesController extends Controller
         // $data = [];
         // $data['email']=$email;
         // $data['full'] = $full;
+        
 
-       	return view('pages.about', compact('data'));
+       	return view('pages.about');
     }
     public function contact ()
     {
@@ -24,6 +26,7 @@ class PagesController extends Controller
     }
     public function index ()
     {
-    	return view('pages.index');
+        $posts = Post::orderBy('id', 'desc')->limit('4')->get();
+    	return view('pages.index', compact('posts'));
     }
 }

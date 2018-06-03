@@ -22,7 +22,7 @@
 				<div class="col-sm-6">
 					{!! Html::linkRoute('posts.edit', 'Edit', array($post->id), array('class'=>"btn btn-primary btn-block")) !!}
 				</div>
-				<div class="col-sm-6 container">
+				<div class="col-sm-6">
 					{!! Form::model($post, array('route' => array('posts.destroy', $post->id), 'files' => true, 'method' => 'DELETE')) !!}﻿
 					{!! Form::submit('DELETE', ['class'=>"btn btn-danger btn-block"]) !!}
 
@@ -33,6 +33,11 @@
 			</div>
 
 
+		</div>
+		<div class="row">
+			<div class="col-md-10">
+				{!! Html::linkRoute('posts.index', '<< See all Posts', array(), array('class'=>"btn btn-default btn-block btn-h1-spacing")) !!}
+			</div>
 		</div>
 	</div>
 </div>

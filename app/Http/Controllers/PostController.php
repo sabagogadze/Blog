@@ -13,9 +13,12 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::all();
+
+        // $showpages = $request->input('showpages');
+        // dd($request);
+        $posts = Post::orderBy('id', 'desc')->paginate(10);
         return view('posts.index', compact('posts'));
     }
 
@@ -59,6 +62,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
+
         $post = Post::find($id);
         return view('posts.shows', compact('post'));
     }

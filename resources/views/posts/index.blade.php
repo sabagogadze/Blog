@@ -34,6 +34,12 @@
 				@endforeach
 			</tbody>
 		</table>
+		<select name="showpages" id="">
+			<option value="50">5</option>
+		</select>
+		<div class="text-center">
+		{!! $posts->links(); !!}
+		</div>
 	</div>
 </div>
 @endsection
