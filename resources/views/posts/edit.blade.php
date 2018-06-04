@@ -6,6 +6,8 @@
 	<div class="col-md-8">
 		{!! Form::label('title', 'Title:') !!}
 		{!! Form::text('title', null, ['class'=>'form-control']) !!}
+		{!! Form::label('slug', 'slug :') !!}
+    	{!! Form::text('slug', null, array('class'=>'form-control')) !!}
 		{!! Form::label('body', 'Body:') !!}
 		{!! Form::textarea('body', null, ['class'=>'form-control']) !!}
 	</div>

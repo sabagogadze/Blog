@@ -6,12 +6,18 @@
 		<h1>{{ $post->title }} </h1> <br>
 		<p class="lead">{{ $post->body }}</p>
 	</div>
+
 	<div class="col-md-4">
 		<div class="well">
+			<dl class="dl-horizontal">
+				<dt>Url :</dt>
+				<dd><a href="{{ url($post->slug) }}">{{ url($post->slug) }}</a></dd>
+			</dl>
 			<dl class="dl-horizontal">
 				<dt>Created At:</dt>
 				<dd>{{ date('M j, Y H:i', strtotime($post->created_at)) }}</dd>
 			</dl>
+
 			<dl class="dl-horizontal">
 				<dt>Last Updated:</dt>
 				<dd>{{ date('M j, Y H:i', strtotime($post->updated_at)) }}</dd>
@@ -27,9 +33,7 @@
 					{!! Form::submit('DELETE', ['class'=>"btn btn-danger btn-block"]) !!}
 
 					{!! Form::close() !!}
-{{-- 
-					{!! Html::linkRoute('posts.destroy', 'Delete', array($post->id), array('class'=>"btn btn-danger btn-block")) !!}
-				</div> --}}
+
 			</div>
 
 
@@ -39,6 +43,7 @@
 				{!! Html::linkRoute('posts.index', '<< See all Posts', array(), array('class'=>"btn btn-default btn-block btn-h1-spacing")) !!}
 			</div>
 		</div>
+	</div>
 	</div>
 </div>
 

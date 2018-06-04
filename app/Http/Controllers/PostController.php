@@ -42,11 +42,14 @@ class PostController extends Controller
     {
         $this->validate($request, array(
             'title'=> 'required|max:190',
-            'body'=> 'required'
+            'body'=> 'required',
+            'slug'=> 'required|max:190|min:5|alpha_dash'
         ));
         $post = new Post;
         $post->title = $request->title;
+        $post->slug = $request->slug;
         $post->body = $request->body;
+        
 
             $post->save();
             Session::flash('success', 'Blog Post has been saved successfully!');
@@ -90,10 +93,12 @@ class PostController extends Controller
     {
          $this->validate($request, array(
             'title'=> 'required|max:190',
+            'slug'=> 'required|max:190|min:5|alpha_dash',
             'body'=> 'required'
         ));
             $post =Post::find($id);
             $post->title = $request->input('title');
+            $post->slug = $request->input('slug');
             $post->body = $request->input('body');
             $post->save();
             Session::flash('success', 'Blog Post has been updated!');
