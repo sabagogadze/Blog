@@ -22,7 +22,7 @@ active
                     
                     <h3>{{ $post->title }}</h3>
                     <p>{{ substr($post->body, 0,200) }} {{ strlen($post->body) > 200 ?"...":"" }}</p>
-                    <a href="#" class="btn btn-primary">Read more</a>
+                    <a href="{{ url('blog/'.$post->slug) }}" class="btn btn-primary">Read more</a>
                 </div>
                 
                 <hr/>

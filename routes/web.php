@@ -14,13 +14,14 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', 'PagesController@index');
-Route::get('contact', 'PagesController@contact');
-Route::get('about', 'PagesController@about');
-Route::resource('posts', 'PostController');
-
+	Route::get('blog/{slug}', ['as'=>'blog.single', 'uses'=>'BlogController@getSingle'])->where('slug','[\w\d\-\_]+');
+	Route::get('blog', 'BlogController@getIndex')->name('blog.index');
+	Route::get('/', 'PagesController@index');
+	Route::get('contact', 'PagesController@contact');
+	Route::get('about', 'PagesController@about');
+	Route::resource('posts', 'PostController');
 
 // Route::group(['middleware' => ['web']], function()
-
-
-// )
+// {
+	
+// });

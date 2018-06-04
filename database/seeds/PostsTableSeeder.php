@@ -13,10 +13,13 @@ class PostsTableSeeder extends Seeder
     public function run()
     {
     	$faker = Faker::create();
-    	foreach (range(1,1500) as $index) {
+    	foreach (range(1,20) as $index) {
 	        DB::table('posts')->insert([
-	            'title'=>$faker-> title(rand(8, 12)),
+	            'title'=>$faker-> sentence(rand(1, 3)),
         		'body'=>$faker->text(rand(500, 1000)),
+                'slug'=>$faker->word(10,5),
+                'created_at'=>$faker->date(),
+                'updated_at'=>$faker->date()
 	        ]);
 
     	// DB::statement('SET FOREIGN_KEY_CHECKS=0');

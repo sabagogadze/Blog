@@ -43,7 +43,7 @@ class PostController extends Controller
         $this->validate($request, array(
             'title'=> 'required|max:190',
             'body'=> 'required',
-            'slug'=> 'required|max:190|min:5|alpha_dash'
+            'required|alpha_dash|min:5|max:190|unique:posts,slug'
         ));
         $post = new Post;
         $post->title = $request->title;
@@ -91,11 +91,21 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $this->validate($request, array(
-            'title'=> 'required|max:190',
-            'slug'=> 'required|max:190|min:5|alpha_dash',
-            'body'=> 'required'
-        ));
+            $post = Post::find($id);
+            if ($request->input('slug')==$post->slug) {
+                $this->validate($request, array(
+                'title'=> 'required|max:190',
+                'body'=> 'required'));
+       
+            } else {
+                $this->validate($request, array(
+                'title'=> 'required|max:190',
+                'slug'=> 'required|alpha_dash|min:5|max:190|unique:posts,slug',
+                'body'=> 'required'
+                 ));
+                }
+            
+          
             $post =Post::find($id);
             $post->title = $request->input('title');
             $post->slug = $request->input('slug');
