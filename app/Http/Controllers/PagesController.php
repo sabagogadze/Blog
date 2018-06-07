@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Http\Controllers\Auth;
 
 class PagesController extends Controller
 {
@@ -26,6 +27,7 @@ class PagesController extends Controller
     }
     public function index ()
     {
+        
         $posts = Post::orderBy('id', 'desc')->limit('4')->get();
     	return view('pages.index', compact('posts'));
     }

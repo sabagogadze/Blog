@@ -19,9 +19,13 @@
 	Route::get('/', 'PagesController@index');
 	Route::get('contact', 'PagesController@contact');
 	Route::get('about', 'PagesController@about');
-	Route::resource('posts', 'PostController');
-
-// Route::group(['middleware' => ['web']], function()
-// {
 	
-// });
+
+Route::group(['middleware' => ['auth']], function()
+{
+	Route::resource('posts', 'PostController');
+});
+
+Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
