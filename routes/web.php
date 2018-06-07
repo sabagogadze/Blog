@@ -24,6 +24,7 @@
 Route::group(['middleware' => ['auth']], function()
 {
 	Route::resource('posts', 'PostController');
+	Route::resource('categories', 'CategoryController', ['except'=>['create']]);
 });
 
 Auth::routes();

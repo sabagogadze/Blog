@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use Session;
 
 class CategoryController extends Controller
 {
+    // public function __construct ()
+    // {
+    //     $this->middleware('auth');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::orderBy('id', 'desc')->paginate(20);
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -22,10 +28,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+   
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +38,16 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, array(
+            'name'=> 'required|max:190',
+           
+            
+        ));
+        $category = new Category;
+        $category->name = $request->name;
+        $category->save();
+        Session::flash('success', 'Category has been saved successfully!');
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -46,7 +58,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        
     }
 
     /**
