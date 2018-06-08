@@ -71,6 +71,7 @@ class PostController extends Controller
     {
 
         $post = Post::find($id);
+
         return view('posts.shows', compact('post'));
     }
 
@@ -83,7 +84,8 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
-        return view('posts.edit', compact('post'));
+        $categories = Category::all();
+        return view('posts.edit', compact('post', 'categories'));
     }
 
     /**
@@ -113,6 +115,7 @@ class PostController extends Controller
             $post =Post::find($id);
             $post->title = $request->input('title');
             $post->slug = $request->input('slug');
+            $post->category_id = $request->input('category_id');
             $post->body = $request->input('body');
             $post->save();
             Session::flash('success', 'Blog Post has been updated!');

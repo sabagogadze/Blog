@@ -18,7 +18,8 @@
 				<thead>
 					<tr>
 						<th>Name</th>
-						<th></th>
+						<th>Edit </th>
+						<th>Delete</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -26,7 +27,11 @@
 			
 					<tr>
 						<td>{{ $category->name }}</td>
-						<td></td>
+						<td><a href="{{ route('categories.edit', $category->id) }}" class=" btn btn-default btn-sm">Edit</a> </td>
+						<td>{{-- {!! Form::model($category, array('route' => array('categories.destroy', $category->id), 'files' => true, 'method' => 'DELETE')) !!}﻿
+					{!! Form::submit('DELETE', ['class'=>"btn btn-danger "]) !!}
+
+					{!! Form::close() !!}  --}}</td>
 					</tr>
 					@endforeach
 				</tbody>

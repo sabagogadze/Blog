@@ -84,4 +84,8 @@ body {
 #createPost 
 {
 	margin-top: 10px;
-}        
+} 
+.postdelete {
+	margin-top: 19px;
+	margin-bottom: 5px;
+}       

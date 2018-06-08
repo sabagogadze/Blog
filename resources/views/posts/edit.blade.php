@@ -5,8 +5,15 @@
 {!! Form::model($post, array('route' => array('posts.update', $post->id), 'files' => true, 'method' => 'PUT')) !!}﻿
 	<div class="col-md-8">
 		{!! Form::label('title', 'Title:') !!}
-		{!! Form::text('title', null, ['class'=>'form-control']) !!}
+		{!! Form::text('title', null, ['class'=>'form-control']) !!} <br>
+		{!! Form::label('category_id', 'Category:') !!}
+    			<select class="form-control" name="category_id">
+    				@foreach ($categories as $category)
+    					<option value="{{ $category->id }}">{{ $category->name }}</option>
+    				@endforeach 
+    			</select>
 		{!! Form::label('slug', 'slug :') !!}
+
     	{!! Form::text('slug', null, array('class'=>'form-control')) !!}
 		{!! Form::label('body', 'Body:') !!}
 		{!! Form::textarea('body', null, ['class'=>'form-control']) !!}
@@ -29,7 +36,7 @@
 				</div>
 				<div class="col-sm-6">
 					{!! Form::submit('Save Changes', ['class'=>"btn btn-success btn-block"]) !!}
-					{{-- {!! Html::linkRoute('posts.update', 'Save Changes', array($post->id), array('class'=>"btn btn-success btn-block")) !!} --}}
+					
 				</div>
 			</div>
 

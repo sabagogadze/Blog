@@ -16,6 +16,7 @@
 		<table class="table">
 			<thead>
 				<th>Title</th>
+				<th>Category</th>
 				<th>Body</th>
 				<th>Created At</th>
 				<th>Edit/Delte</th>
@@ -24,6 +25,7 @@
 				@foreach ($posts as $post)
 				<tr>
 					<td>{{ $post->title }}</td>
+					<td>{{ $post->category->name }}</td>
 					<td>{{ substr($post->body, 0,50) }} {{ strlen($post->body) > 50 ?"...":"" }}</td>
 					<td>{{ date('M j, Y H:i', strtotime($post->created_at)) }}</td>
 					<td>
